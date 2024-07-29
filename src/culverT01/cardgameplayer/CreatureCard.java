@@ -37,8 +37,8 @@ public class CreatureCard extends Card{
 			}
 			//If nullCounter is less than 4, then:
 			if( nullCounter < 4) {
-				//Try to: create new Scanner object to take input
-				try (Scanner input = new Scanner(System.in)) {
+				//Create new Scanner object to take input
+				Scanner input = new Scanner(System.in);
 					//Ask User to input the number of the position of the creature they want to attack
 					System.out.println("Enter the number of the position of the creature you want to attack");
 					//Set integer choice to be next inputed integer
@@ -59,7 +59,7 @@ public class CreatureCard extends Card{
 						//Set the selected creature's health to equal result
 						opponent.getFrontline()[choice].setHealth(result);
 					}
-				}
+					//input.close();
 			}
 			//Else, then:
 			else {

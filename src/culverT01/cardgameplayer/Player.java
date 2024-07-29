@@ -13,13 +13,13 @@ public class Player {
 	private CreatureCard [] frontline;
 
 	//Constructor
-	public Player(String playerName, int defensePoints) {
+	public Player(String playerName, int defencePoints, ArrayList<Card> wasteland, ArrayList<Card> hand, ArrayList<Card> deck) {
 		this.setPlayerName(playerName);
-		this.setDefencePoints(defensePoints);
-		wasteland = new ArrayList<>();
-		hand = new ArrayList<>();
-		deck = new ArrayList<>();
-		frontline = new CreatureCard [4];	
+		this.setDefencePoints(defencePoints);
+		this.setWasteland(wasteland);
+		this.setHand(hand);
+		this.setDeck(deck);
+		frontline = new CreatureCard [4];
 	}
 
 	//Behaviours
@@ -54,9 +54,9 @@ public class Player {
 		}
 	}
 	//Playing a card from hand method
-	public void playCardFromHand() {
-		//Try to:create new Scanner object to take input
-		try (Scanner input = new Scanner(System.in)) {
+	public void playCardFromHand(Player player) {
+		//Try to: create new Scanner object to take input
+		Scanner input = new Scanner(System.in);
 			//Ask User to input the number of the position of the card they want to play
 			System.out.println("Enter the position of the card in your hand you would like to play");
 			//Set integer choice to be next inputed integer
@@ -98,10 +98,15 @@ public class Player {
 				boolean playedMagicSupport = false;
 				//For each Creature Card ma in frontline:
 				for(CreatureCard ma: frontline) {
-					//If the card type of ma is equal to 'Magic Creature', then
-					if( ma.getCardType() == "Magic Creature") {
+					//If ma is null, then:
+					if (ma == null) {
+						//Output whitespace so NullPointerExeceptions don't occur
+						System.out.print("");
+					}
+					//If the card type of ma is equal to 'Magic Creature', then:
+					else if( ma.getCardType() == "Magic Creature") {
 						//Run the selected card's effect method
-						((SupportCard) hand.get(choice)).effect();
+						((SupportCard) hand.get(choice)).effect(player);
 						//Add selected card to the wasteland array
 						wasteland.add(hand.get(choice));
 						//Remove the selected card from the hand
@@ -110,6 +115,11 @@ public class Player {
 						playedMagicSupport = true;
 						//Break loop
 						break;
+					}
+					//Else, then:
+					else {
+						//Output whitespace
+						System.out.print("");
 					}
 				}
 				//If playedMagicSupport is equal to false, then:
@@ -125,16 +135,26 @@ public class Player {
 				boolean playedItemSupport = false;
 				//For each Creature Card me in frontline:
 				for(CreatureCard me: frontline) {
-					//If the card type of me is equal to 'Melee Creature', then
-					if( me.getCardType() == "Melee Creature") {
+					//If me is null, then:
+					if (me == null) {
+						//Output whitespace so NullPointerExeceptions don't occur
+						System.out.print("");
+					}
+					//Else if the card type of me is equal to 'Melee Creature', then
+					else if( me.getCardType() == "Melee Creature") {
 						//Run the selected card's effect method
-						((SupportCard) hand.get(choice)).effect();
+						((SupportCard) hand.get(choice)).effect(player);
 						//Add selected card to the wasteland array
 						wasteland.add(hand.get(choice));
 						//Remove the selected card from the hand
 						hand.remove(choice);
 						//Break loop
 						break;
+					}
+					//Else, then:
+					else {
+						//Output whitespace
+						System.out.print("");
 					}
 				}
 				//If playedItemSupport is equal to false, then:
@@ -149,7 +169,6 @@ public class Player {
 				//Output 'Invalid card type'
 				System.out.println("Invalid card type");
 			}
-		}
 	}
 	//Getters and Setters
 	public String getPlayerName() {
@@ -177,7 +196,7 @@ public class Player {
 		return frontline;
 	}
 	
-	/*public void setDeck(ArrayList<Card> deck) {
+	public void setDeck(ArrayList<Card> deck) {
 		this.deck = deck;
 	}
 	public void setWasteland(ArrayList<Card> wasteland) {
@@ -186,9 +205,9 @@ public class Player {
 	public void setHand(ArrayList<Card> hand) {
 		this.hand = hand;
 	}
-	public void setFrontline(Card[] frontline) {
+	public void setFrontline(CreatureCard[] frontline) {
 		this.frontline = frontline;
 	}
-	*/
+
 
 }
