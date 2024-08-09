@@ -3,12 +3,18 @@ package culverT01.cardgameplayer;
 import java.util.Scanner;
 
 public class SupportCard2 extends SupportCard{
-
-	public SupportCard2(String name, String cardType, String effectDesc) {
+	//Attribute
+	private int strength;
+	
+	//Constructor
+	public SupportCard2(String name, String cardType, String effectDesc, int strength) {
 		super(name, cardType, effectDesc);
+		this.setStrength(strength);
 	}
 
+	//Behaviour
 	@Override
+	//Effect method
 	public void effect(Player player) {
 		//Loop for integer i is less than the length of the player's frontline array, increasing i by 1 for each loop
 				for (int i = 0; i < player.getFrontline().length; i++) {
@@ -32,12 +38,21 @@ public class SupportCard2 extends SupportCard{
 				//Create new Scanner object to take input
 				Scanner input = new Scanner(System.in);
 				//Ask User to input the number of the position of the card they want to apply this card's effect to
-				System.out.println("Enter the position of the Magic Creature you wish to increase its Attack by 300");
+				System.out.println("Enter the position of the Magic Creature you wish to increase its Attack by " + strength);
 				//Set integer choice to be next inputed integer
 				int choice = input.nextInt();
 				//Set the attack of chosen creature to equal itself + 300
-				player.getFrontline()[choice].setAttack(player.getFrontline()[choice].getAttack() + 300);
+				player.getFrontline()[choice].setAttack(player.getFrontline()[choice].getAttack() + strength);
 		
+	}
+
+	//Getter and Setter
+	public int getStrength() {
+		return strength;
+	}
+
+	public void setStrength(int strength) {
+		this.strength = strength;
 	}
 
 }

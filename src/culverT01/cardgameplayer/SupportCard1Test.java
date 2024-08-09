@@ -15,7 +15,7 @@ class SupportCard1Test {
 	@BeforeEach
 	void setUp() throws Exception {
 		//Arrange
-		support1 = new SupportCard1("Iron Sword", "Item Support", "Increase the attack of one Melee Creature on your Frontline by 300");
+		support1 = new SupportCard1("Iron Sword", "Item Support", "Increase the attack of one Melee Creature on your Frontline by 300", 300);
 		creature1 = new CreatureCard("Simple Slime", "Melee Creature", 500, 500, null);
 		player1 = new Player("PlayerName", 4000, null, null, null);
 		CreatureCard [] frontline = {creature1, null, null, null};

@@ -28,8 +28,8 @@ class PlayerTest {
 		creature1 = new CreatureCard("Will o Wisp", "Magic Creature", 800, 300, null);
 		creature2 = new CreatureCard("Ace Hunter", "Melee Creature", 700, 1400, "Ace");
 		creature3 = new CreatureCard("Fairy Queen", "Magic Creature", 1000, 2500, "Legend");
-		support1 = new SupportCard1("Iron Sword", "Item Support", "Increase the attack of one Melee Creature on your Frontline by 300");
-		support2 = new SupportCard2("Strength Spell Lv 1", "Magic Support", "Increase the attack of one Magic Creature on your Frontline by 300");
+		support1 = new SupportCard1("Iron Sword", "Item Support", "Increase the attack of one Melee Creature on your Frontline by 300", 300);
+		support2 = new SupportCard2("Strength Spell Lv 1", "Magic Support", "Increase the attack of one Magic Creature on your Frontline by 300", 300);
 		
 		hand.add(creature1);
 		hand.add(creature2);
