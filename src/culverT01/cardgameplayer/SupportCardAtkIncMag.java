@@ -2,12 +2,12 @@ package culverT01.cardgameplayer;
 
 import java.util.Scanner;
 
-public class SupportCard2 extends SupportCard{
+public class SupportCardAtkIncMag extends SupportCard{
 	//Attribute
 	private int strength;
 	
 	//Constructor
-	public SupportCard2(String name, String cardType, String effectDesc, int strength) {
+	public SupportCardAtkIncMag(String name, String cardType, String effectDesc, int strength) {
 		super(name, cardType, effectDesc);
 		this.setStrength(strength);
 	}

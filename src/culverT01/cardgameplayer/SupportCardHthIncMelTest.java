@@ -1,4 +1,3 @@
-
 package culverT01.cardgameplayer;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class SupportCard1Test {
-	SupportCard1 support1;
+class SupportCardHthIncMelTest {
+	SupportCardHthIncMel support1;
 	Player player1;
 	CreatureCard creature1;
 	CreatureCard [] frontline;
@@ -15,7 +14,7 @@ class SupportCard1Test {
 	@BeforeEach
 	void setUp() throws Exception {
 		//Arrange
-		support1 = new SupportCard1("Iron Sword", "Item Support", "Increase the attack of one Melee Creature on your Frontline by 300", 300);
+		support1 = new SupportCardHthIncMel("Wooden Shield", "Item Support", "Increase the health of one Melee Creature on your Frontline by 300", 300);
 		creature1 = new CreatureCard("Simple Slime", "Melee Creature", 500, 500, null);
 		player1 = new Player("PlayerName", 4000, null, null, null);
 		CreatureCard [] frontline = {creature1, null, null, null};
@@ -23,11 +22,11 @@ class SupportCard1Test {
 	}
 
 	@Test
-	void test_that_creature1s_attack_increases_by_300_to_800() {
+	void test() {
 		//Act
 		support1.effect(player1);
 		//Assert
-		assertEquals(800, creature1.getAttack());
+		assertEquals(800, creature1.getHealth());
 	}
 
 }
