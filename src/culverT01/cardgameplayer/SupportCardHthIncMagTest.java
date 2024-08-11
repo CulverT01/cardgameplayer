@@ -14,7 +14,7 @@ class SupportCardHthIncMagTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		//Arrange
-		support1 = new SupportCardHthIncMag("Wooden Shield", "Item Support", "Increase the health of one Melee Creature on your Frontline by 300", 300);
+		support1 = new SupportCardHthIncMag("Healing Spell Lv 1", "Magic Support", "Increase the health of one Magic Creature on your Frontline by 300", 300);
 		creature1 = new CreatureCard("Will o Wisp", "Magic Creature", 800, 300, null);
 		player1 = new Player("PlayerName", 4000, null, null, null);
 		CreatureCard[] frontline = { creature1, null, null, null };
