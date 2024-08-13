@@ -14,7 +14,9 @@ public class SupportCardHthIncMag extends SupportCard{
 
 	//Behaviour
 	@Override
-	public void effect(Player player) {
+	public void effect(Player player, KeyFunction keyFunction) {
+		//Call keyFunction's displayFrontline method, passing player and 'Magic Creature' as arguments
+		keyFunction.displayFrontline(player, "Magic Creature");
 		//Create new Scanner object to take input
 		Scanner input = new Scanner(System.in);
 		//Ask User to input the number of the position of the card they want to apply this cards effect to

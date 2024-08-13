@@ -9,7 +9,7 @@ public abstract class SupportCard extends Card {
 		this.setEffectDesc(effectDesc);
 	}
 	//Behaviour
-	public abstract void effect(Player player);
+	public abstract void effect(Player player, KeyFunction keyFunction);
 	
 	//Getters and Setters
 	public String getEffectDesc() {

@@ -13,6 +13,7 @@ class SupportCardSerMaTest {
 	Player player1;
 	ArrayList<Card> hand;
 	ArrayList<Card> deck;
+	KeyFunction keyFunction;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -23,12 +24,13 @@ class SupportCardSerMaTest {
 		creature1 = new CreatureCard("Will o Wisp", "Magic Creature", 800, 300, null);
 		deck.add(creature1);
 		player1 = new Player("PlayerName", 4000, null, hand, deck);
+		keyFunction = new KeyFunction();
 	}
 
 	@Test
 	void test_effect_method_to_add_magic_creature_to_hand_from_deck() {
 		//Act
-		support1.effect(player1);
+		support1.effect(player1, keyFunction);
 		//Assert
 		assertEquals(1, player1.getHand().size());
 	}

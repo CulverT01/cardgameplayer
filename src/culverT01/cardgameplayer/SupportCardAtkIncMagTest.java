@@ -10,6 +10,7 @@ class SupportCardAtkIncMagTest {
 	Player player1;
 	CreatureCard creature1;
 	CreatureCard [] frontline;
+	KeyFunction keyFunction;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -19,12 +20,13 @@ class SupportCardAtkIncMagTest {
 		player1 = new Player("PlayerName", 4000, null, null, null);
 		CreatureCard [] frontline = {creature1, null, null, null};
 		player1.setFrontline(frontline);
+		keyFunction = new KeyFunction();
 			}
 
 			@Test
 			void test_that_creature1s_attack_increases_by_300_to_600() {
 				//Act
-				support2.effect(player1);
+				support2.effect(player1, keyFunction);
 				//Assert
 				assertEquals(600, creature1.getAttack());
 			}

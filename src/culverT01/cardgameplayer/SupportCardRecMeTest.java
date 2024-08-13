@@ -13,6 +13,7 @@ class SupportCardRecMeTest {
 	CreatureCard creature1;
 	ArrayList<Card> wasteland;
 	ArrayList<Card> deck;
+	KeyFunction keyFunction;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -23,12 +24,13 @@ class SupportCardRecMeTest {
 		deck = new ArrayList<Card>();
 		wasteland.add(creature1);
 		player1 = new Player("PlayerName", 4000, wasteland, null, deck);
+		keyFunction = new KeyFunction();
 	}
 
 	@Test
 	void test() {
 		//Act
-		support1.effect(player1);
+		support1.effect(player1, keyFunction);
 		//Assert
 		assertEquals(1, player1.getDeck().size());
 	}

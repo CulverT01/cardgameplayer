@@ -12,7 +12,7 @@ public class SupportCardDefInc extends SupportCard {
 
 	//Behaviour
 	@Override
-	public void effect(Player player) {
+	public void effect(Player player, KeyFunction keyFunction) {
 		//Increase the player's defence points by the value stored in the strength attribute
 		player.setDefencePoints(player.getDefencePoints() + strength);
 

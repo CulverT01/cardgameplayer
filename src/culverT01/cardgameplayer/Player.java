@@ -54,7 +54,7 @@ public class Player {
 		}
 	}
 	//Playing a card from hand method
-	public void playCardFromHand(Player player) {
+	public void playCardFromHand(Player player, KeyFunction keyFunction) {
 		//Try to: create new Scanner object to take input
 		Scanner input = new Scanner(System.in);
 			//Ask User to input the number of the position of the card they want to play
@@ -106,7 +106,7 @@ public class Player {
 					//If the card type of ma is equal to 'Magic Creature', then:
 					else if( ma.getCardType() == "Magic Creature") {
 						//Run the selected card's effect method
-						((SupportCard) hand.get(choice)).effect(player);
+						((SupportCard) hand.get(choice)).effect(player, keyFunction);
 						//Add selected card to the wasteland array
 						wasteland.add(hand.get(choice));
 						//Remove the selected card from the hand
@@ -143,7 +143,7 @@ public class Player {
 					//Else if the card type of me is equal to 'Melee Creature', then
 					else if( me.getCardType() == "Melee Creature") {
 						//Run the selected card's effect method
-						((SupportCard) hand.get(choice)).effect(player);
+						((SupportCard) hand.get(choice)).effect(player,  keyFunction);
 						//Add selected card to the wasteland array
 						wasteland.add(hand.get(choice));
 						//Remove the selected card from the hand

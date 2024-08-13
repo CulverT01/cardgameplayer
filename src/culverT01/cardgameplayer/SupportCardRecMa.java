@@ -11,28 +11,9 @@ public class SupportCardRecMa extends SupportCard {
 
 	//Behaviour
 	@Override
-	public void effect(Player player) {
-		//Loop for integer i is less than the length of the player's wasteland array list, increasing i by 1 for each loop
-		for (int i = 0; i < player.getWasteland().size(); i++) {
-			//If item at position i in player's wasteland array is equal to null, then:
-			if(player.getWasteland().get(i) == null) {
-				//Output whitespace so NullPointerExeceptions don't occur
-				System.out.print("");
-			}
-			//If item at position i in player's wasteland array's card type is equal to 'Magic Creature', then:
-			else if(player.getWasteland().get(i).getCardType() == "Magic Creature") {
-				//Output the name, health, attack and position in the array of the Creature stored there.
-				System.out
-				.print(player.getWasteland().get(i).getName() + "\n" + ((CreatureCard) player.getWasteland().get(i)).getHealth()
-						+ "\n" + ((CreatureCard) player.getWasteland().get(i)).getAttack() + "\n position: " + i);
-				System.out.print("|\n|\n|\n|\t");
-			}
-			//Else, then:
-			else {
-				//Output whitespace
-				System.out.print("");
-			}
-		}
+	public void effect(Player player, KeyFunction keyFunction) {
+		//Call keyFunction's displayWasteland method, passing player and 'Magic Creature' as arguments
+		keyFunction.displayWasteland(player, "Magic Creature");
 		//Create new Scanner object to take input
 		Scanner input = new Scanner(System.in);
 		//Ask User to input the number of the position of the card they want to apply this cards effect to

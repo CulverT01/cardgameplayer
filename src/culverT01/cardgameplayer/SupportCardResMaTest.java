@@ -13,6 +13,7 @@ class SupportCardResMaTest {
 	CreatureCard creature1;
 	CreatureCard creature2;
 	ArrayList<Card> wasteland;
+	KeyFunction keyFunction;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -25,12 +26,13 @@ class SupportCardResMaTest {
 		player1 = new Player("PlayerName", 4000, wasteland, null, null);
 		CreatureCard [] frontline = {creature1, null, null, null};
 		player1.setFrontline(frontline);
+		keyFunction = new KeyFunction();
 	}
 
 	@Test
 	void test_effect_method_plays_magic_creature_from_wasteland_to_frontline() {
 		//Act
-		support1.effect(player1);
+		support1.effect(player1, keyFunction);
 		//Assert
 		assertEquals(0, player1.getWasteland().size());
 	}

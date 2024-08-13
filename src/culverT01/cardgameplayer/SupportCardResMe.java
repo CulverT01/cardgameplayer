@@ -10,7 +10,9 @@ public class SupportCardResMe extends SupportCard {
 	}
 	//Behaviour
 	@Override
-	public void effect(Player player) {
+	public void effect(Player player, KeyFunction keyFunction) {
+		//Call keyFunction's displayWasteland method, passing player and 'Melee Creature' as arguments
+		keyFunction.displayWasteland(player, "Melee Creature");
 		//Loop for integer i is less than the length of the player's wasteland array list, increasing i by 1 for each loop
 		for (int i = 0; i < player.getWasteland().size(); i++) {
 			//If item at position i in player's wasteland array is equal to null, then:
