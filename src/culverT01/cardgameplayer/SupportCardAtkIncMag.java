@@ -7,15 +7,15 @@ public class SupportCardAtkIncMag extends SupportCard{
 	private int strength;
 	
 	//Constructor
-	public SupportCardAtkIncMag(String name, String cardType, String effectDesc, int strength) {
-		super(name, cardType, effectDesc);
+	public SupportCardAtkIncMag(String name, String cardType, String skill, String effectDesc, int strength) {
+		super(name, cardType, skill, effectDesc);
 		this.setStrength(strength);
 	}
 
 	//Behaviour
 	@Override
 	//Effect method
-	public void effect(Player player, KeyFunction keyFunction) {
+	public boolean effect(Player player, KeyFunction keyFunction) {
 		//Call keyFunction's displayFrontline method, passing player and 'Magic Creature' as arguments
 		keyFunction.displayFrontline(player, "Magic Creature");
 		//Create new Scanner object to take input
@@ -26,7 +26,7 @@ public class SupportCardAtkIncMag extends SupportCard{
 		int choice = input.nextInt();
 		//Set the attack of chosen creature to equal itself + 300
 		player.getFrontline()[choice].setAttack(player.getFrontline()[choice].getAttack() + strength);
-		
+		return true;
 	}
 
 	//Getter and Setter

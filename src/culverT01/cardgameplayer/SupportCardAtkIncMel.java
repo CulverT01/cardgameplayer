@@ -7,15 +7,15 @@ public class SupportCardAtkIncMel extends SupportCard {
 	private int strength;
 
 	//Constructor
-	public SupportCardAtkIncMel(String name, String cardType, String effectDesc, int strength) {
-		super(name, cardType, effectDesc);
+	public SupportCardAtkIncMel(String name, String cardType, String skill, String effectDesc, int strength) {
+		super(name, cardType, skill, effectDesc);
 		this.setStrength(strength);
 	}
 
 	//Behaviour
 	@Override
 	//Effect method
-	public void effect(Player player, KeyFunction keyFunction) {
+	public boolean effect(Player player, KeyFunction keyFunction) {
 		//Call keyFunction's displayFrontline method, passing player and 'Melee Creature' as arguments
 		keyFunction.displayFrontline(player, "Melee Creature");
 		//Create new Scanner object to take input
@@ -26,6 +26,7 @@ public class SupportCardAtkIncMel extends SupportCard {
 		int choice = input.nextInt();
 		//Set the attack of chosen creature to equal itself + 300
 		player.getFrontline()[choice].setAttack(player.getFrontline()[choice].getAttack() + strength);
+		return true;
 	}
 
 	//Getter and Setter

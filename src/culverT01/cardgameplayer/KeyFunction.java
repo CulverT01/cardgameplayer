@@ -75,12 +75,13 @@ public class KeyFunction {
 				// If item at position i in player's wasteland array's card type is equal to
 				// cardType parameter, then:
 				if (player.getWasteland().get(i).getCardType() == cardType) {
-					// Output the name, health, attack and position in the array of the Creature
+					// Output the name, health, attack, skill and position in the array of the Creature
 					// stored there.
 					System.out.print(player.getWasteland().get(i).getName() + "\n"
 							+ ((CreatureCard) player.getWasteland().get(i)).getHealth() + "\n"
-							+ ((CreatureCard) player.getWasteland().get(i)).getAttack() + "\n position: " + i);
-					System.out.print("|\n|\n|\n|\t");
+							+ ((CreatureCard) player.getWasteland().get(i)).getAttack()
+							+ player.getWasteland().get(i).getSkill() + "\n" + "\n position: " + i);
+					System.out.println("|\n|\n|\n|\t");
 				}
 				// Else, then:
 				else {
@@ -100,11 +101,12 @@ public class KeyFunction {
 				// If item at position i in player's wasteland array's card type is equal to
 				// cardType parameter, then:
 				if (player.getWasteland().get(i).getCardType() == cardType) {
-					// Output the name, effect description, attack and position in the array of the
+					// Output the name, skill, effect description and position in the array of the
 					// Support Card stored there.
 					System.out.print(player.getWasteland().get(i).getName() + "\n"
+							+ player.getWasteland().get(i).getSkill() + "\n"
 							+ ((SupportCard) player.getWasteland().get(i)).getEffectDesc() + "\n position: " + i);
-					System.out.print("|\n|\t");
+					System.out.println("|\n|\n|\n|\t");
 				}
 				// Else, then:
 				else {
@@ -129,18 +131,19 @@ public class KeyFunction {
 		case "Magic Creature":
 			// Melee Creature, then:
 		case "Melee Creature":
-			// Loop for integer i is less than the length of the player's wasteland array
+			// Loop for integer i is less than the length of the player's deck array
 			// list, increasing i by 1 for each loop
 			for (int i = 0; i < player.getDeck().size(); i++) {
-				// If item at position i in player's wasteland array's card type is equal to
+				// If item at position i in player's deck array's card type is equal to
 				// cardType parameter, then:
 				if (player.getDeck().get(i).getCardType() == cardType) {
-					// Output the name, health, attack and position in the array of the Creature
+					// Output the name, health, attack, skill and position in the array of the Creature
 					// stored there.
 					System.out.print(player.getDeck().get(i).getName() + "\n"
 							+ ((CreatureCard) player.getDeck().get(i)).getHealth() + "\n"
-							+ ((CreatureCard) player.getDeck().get(i)).getAttack() + "\n position: " + i);
-					System.out.print("|\n|\n|\n|\t");
+							+ ((CreatureCard) player.getDeck().get(i)).getAttack() + "\n"
+							+ player.getDeck().get(i).getSkill() + "\n position: " + i);
+					System.out.println("|\n|\n|\n|\n|\t");
 				}
 				// Else, then:
 				else {
@@ -154,17 +157,17 @@ public class KeyFunction {
 		case "Item Support":
 			// Magic Support, then:
 		case "Magic Support":
-			// Loop for integer i is less than the length of the player's wasteland array
+			// Loop for integer i is less than the length of the player's deck array
 			// list, increasing i by 1 for each loop
 			for (int i = 0; i < player.getDeck().size(); i++) {
-				// If item at position i in player's wasteland array's card type is equal to
+				// If item at position i in player's deck array's card type is equal to
 				// 'Magic Creature', then:
 				if (player.getDeck().get(i).getCardType() == cardType) {
-					// Output the name, health, attack and position in the array of the Creature
-					// stored there.
-					System.out.print(player.getDeck().get(i).getName() + "\n"
-							+ ((SupportCard) player.getDeck().get(i)).getEffectDesc() + "\n position: " + i);
-					System.out.print("|\n|\t");
+					// Output the name, skill, effect description and position in the array of the
+					// Support Card stored there.
+					System.out.print(player.getDeck().get(i).getName() + "\n" + player.getDeck().get(i).getSkill()
+							+ "\n" + ((SupportCard) player.getDeck().get(i)).getEffectDesc() + "\n position: " + i);
+					System.out.println("|\n|\n|\t");
 				}
 				// Else, then:
 				else {
@@ -178,6 +181,52 @@ public class KeyFunction {
 		default:
 			// Output 'Invalid card type'
 			System.out.println("Invalid card type");
+		}
+	}
+	//Check a player's wasteland
+	public boolean checkWasteland(Player player, String cardType) {
+		//Set integer cardCount to 0
+		int cardCount = 0;
+		//Loop for Card ca is in a player's wasteland
+		for(Card ca : player.getWasteland()) {
+			//If the cardType of ca is equal to cardType, then:
+			if(ca.getCardType() == cardType) {
+				//Increase cardCount by 1
+				cardCount += 1;
+			}
+		}
+		//If cardCount is more than 0, then:
+		if (cardCount > 0) {
+			//Return the value true
+			return true;
+		}
+		//Else, then:
+		else {
+			//Return the value false
+			return false;
+		}
+	}
+	//Check a player's deck
+	public boolean checkDeck(Player player, String cardType) {
+		//Set integer cardCount to 0
+		int cardCount = 0;
+		//Loop for Card ca is in a player's deck
+		for(Card ca : player.getDeck()) {
+			//If the cardType of ca is equal to cardType, then:
+			if(ca.getCardType() == cardType) {
+				//Increase cardCount by 1
+				cardCount += 1;
+			}
+		}
+		//If cardCount is more than 0, then:
+		if (cardCount > 0) {
+			//Return the value true
+			return true;
+		}
+		//Else, then:
+		else {
+			//Return the value false
+			return false;
 		}
 	}
 }

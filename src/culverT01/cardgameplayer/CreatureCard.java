@@ -6,14 +6,13 @@ public class CreatureCard extends Card{
 	//Attributes
 	private int health;
 	private int attack;
-	private String skill;
+	
 	
 	//Constructor
 	public CreatureCard(String name, String cardType, int health, int attack, String skill) {
-		super(name, cardType);
+		super(name, cardType, skill);
 		this.setHealth(health);
 		this.setAttack(attack);
-		this.setSkill(skill);
 	}
 
 	//Behaviour
@@ -90,12 +89,6 @@ public class CreatureCard extends Card{
 	}
 	public void setAttack(int attack) {
 		this.attack = attack;
-	}
-	public String getSkill() {
-		return skill;
-	}
-	public void setSkill(String skill) {
-		this.skill = skill;
 	}
 	
 	

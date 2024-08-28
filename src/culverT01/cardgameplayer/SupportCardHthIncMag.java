@@ -7,14 +7,14 @@ public class SupportCardHthIncMag extends SupportCard{
 	private int strength;
 
 	//Constructor
-	public SupportCardHthIncMag(String name, String cardType, String effectDesc, int strength) {
-		super(name, cardType, effectDesc);
+	public SupportCardHthIncMag(String name, String cardType, String skill, String effectDesc, int strength) {
+		super(name, cardType, skill, effectDesc);
 		this.setStrength(strength);
 	}
 
 	//Behaviour
 	@Override
-	public void effect(Player player, KeyFunction keyFunction) {
+	public boolean effect(Player player, KeyFunction keyFunction) {
 		//Call keyFunction's displayFrontline method, passing player and 'Magic Creature' as arguments
 		keyFunction.displayFrontline(player, "Magic Creature");
 		//Create new Scanner object to take input
@@ -25,7 +25,8 @@ public class SupportCardHthIncMag extends SupportCard{
 		int choice = input.nextInt();
 		//Set the health of chosen creature to equal itself + 300
 		player.getFrontline()[choice].setHealth(player.getFrontline()[choice].getHealth() + strength);
-		
+		//Return the value true
+		return true;
 	}
 	//Getter and Setter
 	public int getStrength() {

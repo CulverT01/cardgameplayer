@@ -4,11 +4,13 @@ public class Card {
 	//Attributes
 	protected String name; 
 	private String cardType;
+	private String skill;
 	
 	//Constructor
-	public Card(String name, String cardType) {
+	public Card(String name, String cardType, String skill) {
 		this.name = name;
 		this.setCardType(cardType);
+		this.setSkill(skill);
 		
 	}
 
@@ -24,6 +26,14 @@ public class Card {
 	}
 	public void setCardType(String cardType) {
 		this.cardType = cardType;
+	}
+
+	public String getSkill() {
+		return skill;
+	}
+
+	public void setSkill(String skill) {
+		this.skill = skill;
 	}
 
 }

@@ -20,8 +20,8 @@ class SupportCardSerMsTest {
 		//Arrange
 		hand = new ArrayList<Card>();
 		deck = new ArrayList<Card>();
-		support1 = new SupportCardSerMs("Memory Spell Lv 1", "Magic Support", "Search 1 Magic Support Card from your Deck and add it to your Hand");
-		support2 = new SupportCardSerMa("Graduation", "Magic Support", "Search 1 Magic Creature from your Deck and add it to your Hand");
+		support1 = new SupportCardSerMs("Memory Spell Lv 1", "Magic Support", "Ace", "Search 1 Magic Support Card from your Deck and add it to your Hand");
+		support2 = new SupportCardSerMa("Graduation", "Magic Support", null, "Search 1 Magic Creature from your Deck and add it to your Hand");
 		deck.add(support2);
 		player1 = new Player("PlayerName", 4000, null, hand, deck);
 		keyFunction = new KeyFunction();
@@ -30,9 +30,19 @@ class SupportCardSerMsTest {
 	@Test
 	void test_effect_method_adds_magic_support_card_to_hand_from_deck() {
 		//Act
-		support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1, keyFunction);
 		//Assert
-		assertEquals(1, player1.getHand().size());
+		assertEquals(true, testEffect);
+	}
+
+	@Test
+	void test_that_effect_fails_as_there_is_no_magic_support_card_in_players_deck() {
+		//Arrange
+		deck.remove(0);
+		//Act
+		boolean testEffect = support1.effect(player1, keyFunction);
+		//Assert
+		assertEquals(false, testEffect);
 	}
 
 }

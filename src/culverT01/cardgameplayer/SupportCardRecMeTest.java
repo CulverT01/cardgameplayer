@@ -18,7 +18,7 @@ class SupportCardRecMeTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		//Arrange
-		support1 = new SupportCardRecMe("Reincarnation", "Item Support", "Return a Melee Creature from the Wasteland to the bottom of the Deck");
+		support1 = new SupportCardRecMe("Reincarnation", "Item Support","Ace", "Return a Melee Creature from the Wasteland to the bottom of the Deck");
 		creature1 = new CreatureCard("Simple Slime", "Melee Creature", 500, 500, null);
 		wasteland = new ArrayList<Card>();
 		deck = new ArrayList<Card>();
@@ -28,11 +28,21 @@ class SupportCardRecMeTest {
 	}
 
 	@Test
-	void test() {
+	void test_that_creature1_is_added_to_the_bottom_of_player1s_deck() {
 		//Act
-		support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1, keyFunction);
 		//Assert
-		assertEquals(1, player1.getDeck().size());
+		assertEquals(true, testEffect);
+	}
+	
+	@Test
+	void test_that_effect_fails_as_there_is_no_melee_creatures_in_players_wasteland() {
+		//Arrange
+		wasteland.remove(0);
+		//Act
+		boolean testEffect = support1.effect(player1, keyFunction);
+		//Assert
+		assertEquals(false, testEffect);
 	}
 
 }

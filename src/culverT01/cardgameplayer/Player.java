@@ -42,13 +42,16 @@ public class Player {
 			//If the card type at position i of hand is 'Melee Creature' or 'Magic Creature', then: 
 			if(hand.get(i).getCardType() == "Melee Creature" || hand.get(i).getCardType() == "Magic Creature") {
 				//Output the name, skill, health, attack and position in hand array of the card
-				System.out.print(hand.get(i).getName() +"\n"+ ((CreatureCard) hand.get(i)).getSkill() 
-						+"\n"+ ((CreatureCard) hand.get(i)).getHealth() +"\n"+ ((CreatureCard) hand.get(i)).getAttack() +"\n position: " + i);
-				System.out.print("|\n|\n|\n|\n|\t");
+				System.out.print(hand.get(i).getName() + "\n" + hand.get(i).getCardType() + "\n"
+						+ ((CreatureCard) hand.get(i)).getHealth() + "\n" + ((CreatureCard) hand.get(i)).getAttack()
+						+ "\n" + hand.get(i).getSkill() + "\n position: " + i);
+				System.out.print("|\n|\n|\n|\n|\n|\t");
 			}
 			else {
 				//Output the name, skill, description of effect and position in hand array of the card
-				System.out.print(hand.get(i).getName() +"\n"+ ((SupportCard) hand.get(i)).getEffectDesc() +"\n position: " + i);
+				System.out.print(hand.get(i).getName() + "\n" + hand.get(i).getCardType() 
+						+ "\n" + hand.get(i).getSkill()
+						+ "\n" + ((SupportCard) hand.get(i)).getEffectDesc() + "\n position: " + i);
 				System.out.print("|\n|\n|\t");
 			}	
 		}
@@ -96,6 +99,8 @@ public class Player {
 			case "Magic Support":
 				//Set boolean playedMagicSupport to false
 				boolean playedMagicSupport = false;
+				//Set boolean successMagicSupport to false
+				boolean successMagicSupport = false;
 				//For each Creature Card ma in frontline:
 				for(CreatureCard ma: frontline) {
 					//If ma is null, then:
@@ -105,14 +110,17 @@ public class Player {
 					}
 					//If the card type of ma is equal to 'Magic Creature', then:
 					else if( ma.getCardType() == "Magic Creature") {
-						//Run the selected card's effect method
-						((SupportCard) hand.get(choice)).effect(player, keyFunction);
-						//Add selected card to the wasteland array
-						wasteland.add(hand.get(choice));
-						//Remove the selected card from the hand
-						hand.remove(choice);
-						//Set playedMagicSupport to true
-						playedMagicSupport = true;
+						//Set successMagicSupport to equal the returned value of the selected card's effect method
+						successMagicSupport = ((SupportCard) hand.get(choice)).effect(player, keyFunction);
+						//If successMagicSupport is equal to true, then:
+						if(successMagicSupport == true) {
+							//Add selected card to the wasteland array
+							wasteland.add(hand.get(choice));
+							//Remove the selected card from the hand
+							hand.remove(choice);
+							//Set playedMagicSupport to true
+							playedMagicSupport = true;
+						}
 						//Break loop
 						break;
 					}
@@ -127,12 +135,19 @@ public class Player {
 					//Output that their frontline doesn't have magic creatures and thus magic support cards can't be played
 					System.out.println("Front Line does not have a Magic Creature card. You cannot play any Magic Support cards");
 				}
+				//If successMagicSupport is equal to false, then:
+				if(successMagicSupport == false) {
+					//Output that their frontline doesn't have magic creatures and thus magic support cards can't be played
+					System.out.println("Support Card's effect cannot resolve successfully. Check Support Card's effect before running again.");
+				}
 				//Prevent other cases running
 				break;
 			//Item Support, then:
 			case "Item Support":
 				//Set boolean playedItemSupport to false
 				boolean playedItemSupport = false;
+				//Set boolean successItemSupport to false
+				boolean successItemSupport = false;
 				//For each Creature Card me in frontline:
 				for(CreatureCard me: frontline) {
 					//If me is null, then:
@@ -142,12 +157,14 @@ public class Player {
 					}
 					//Else if the card type of me is equal to 'Melee Creature', then
 					else if( me.getCardType() == "Melee Creature") {
-						//Run the selected card's effect method
-						((SupportCard) hand.get(choice)).effect(player,  keyFunction);
-						//Add selected card to the wasteland array
-						wasteland.add(hand.get(choice));
-						//Remove the selected card from the hand
-						hand.remove(choice);
+						//Set successItemSupport to equal the returned value of the selected card's effect method
+						successItemSupport = ((SupportCard) hand.get(choice)).effect(player,  keyFunction);
+						if (successItemSupport == true) {
+							//Add selected card to the wasteland array
+							wasteland.add(hand.get(choice));
+							//Remove the selected card from the hand
+							hand.remove(choice);
+						}
 						//Break loop
 						break;
 					}
@@ -161,6 +178,11 @@ public class Player {
 				if(playedItemSupport == false) {
 					//Output that their frontline doesn't have magic creatures and thus magic support cards can't be played
 					System.out.println("Front Line does not have a Melee Creature card. You cannot play any Item Support cards");
+				}
+				//If successItemSupport is equal to false, then:
+				if(successItemSupport == false) {
+					//Output that their frontline doesn't have magic creatures and thus magic support cards can't be played
+					System.out.println("Support Card's effect cannot resolve successfully. Check Support Card's effect before running again.");
 				}
 				//Prevent other cases running
 				break;

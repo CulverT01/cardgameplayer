@@ -4,12 +4,12 @@ public abstract class SupportCard extends Card {
 	//Attributes
 	String effectDesc;
 
-	public SupportCard(String name, String cardType, String effectDesc) {
-		super(name, cardType);
+	public SupportCard(String name, String cardType, String skill, String effectDesc) {
+		super(name, cardType, skill);
 		this.setEffectDesc(effectDesc);
 	}
 	//Behaviour
-	public abstract void effect(Player player, KeyFunction keyFunction);
+	public abstract boolean effect(Player player, KeyFunction keyFunction);
 	
 	//Getters and Setters
 	public String getEffectDesc() {

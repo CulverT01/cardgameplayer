@@ -5,16 +5,18 @@ public class SupportCardDefInc extends SupportCard {
 	private int strength;
 
 	//Constructor
-	public SupportCardDefInc(String name, String cardType, String effectDesc, int strength) {
-		super(name, cardType, effectDesc);
+	public SupportCardDefInc(String name, String cardType, String skill, String effectDesc, int strength) {
+		super(name, cardType, skill, effectDesc);
 		this.setStrength(strength);
 	}
 
 	//Behaviour
 	@Override
-	public void effect(Player player, KeyFunction keyFunction) {
+	public boolean effect(Player player, KeyFunction keyFunction) {
 		//Increase the player's defence points by the value stored in the strength attribute
 		player.setDefencePoints(player.getDefencePoints() + strength);
+		//Return the value true
+		return true;
 
 	}
 

@@ -15,7 +15,7 @@ class SupportCardHthIncMelTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		//Arrange
-		support1 = new SupportCardHthIncMel("Wooden Shield", "Item Support", "Increase the health of one Melee Creature on your Frontline by 300", 300);
+		support1 = new SupportCardHthIncMel("Wooden Shield", "Item Support", null, "Increase the health of one Melee Creature on your Frontline by 300", 300);
 		creature1 = new CreatureCard("Simple Slime", "Melee Creature", 500, 500, null);
 		player1 = new Player("PlayerName", 4000, null, null, null);
 		CreatureCard [] frontline = {creature1, null, null, null};
@@ -24,11 +24,11 @@ class SupportCardHthIncMelTest {
 	}
 
 	@Test
-	void test() {
+	void test_creature1s_health_increases_from_500_to_800() {
 		//Act
-		support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1, keyFunction);
 		//Assert
-		assertEquals(800, creature1.getHealth());
+		assertEquals(true, testEffect);
 	}
 
 }

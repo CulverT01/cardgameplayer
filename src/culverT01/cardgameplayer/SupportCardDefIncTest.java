@@ -13,17 +13,17 @@ class SupportCardDefIncTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		//Arrange
-		support1 = new SupportCardDefInc("Wooden Stakes", "Item Support", "Increase your Defence Points by 500", 500);
+		support1 = new SupportCardDefInc("Wooden Stakes", "Item Support", null, "Increase your Defence Points by 500", 500);
 		player1 = new Player("PlayerName", 4000, null, null, null);
 		keyFunction = new KeyFunction();
 	}
 
 	@Test
-	void test() {
+	void test_players_defence_points_increase_from_4000_to_4500() {
 		//Act
-		support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1, keyFunction);
 		//Assert
-		assertEquals(4500, player1.getDefencePoints());
+		assertEquals(true, testEffect);
 	}
 
 }

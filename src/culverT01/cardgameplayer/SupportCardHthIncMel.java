@@ -7,14 +7,14 @@ public class SupportCardHthIncMel extends SupportCard{
 	private int strength;
 
 	//Constructor
-	public SupportCardHthIncMel(String name, String cardType, String effectDesc, int strength) {
-		super(name, cardType, effectDesc);
+	public SupportCardHthIncMel(String name, String cardType, String skill, String effectDesc, int strength) {
+		super(name, cardType, skill, effectDesc);
 		this.setStrength(strength);
 	}
 
 	//Behaviour
 	@Override
-	public void effect(Player player, KeyFunction keyFunction) {
+	public boolean effect(Player player, KeyFunction keyFunction) {
 		//Call keyFunction's displayFrontline method, passing player and 'Melee Creature' as arguments
 		keyFunction.displayFrontline(player, "Melee Creature");
 		//Create new Scanner object to take input
@@ -24,7 +24,8 @@ public class SupportCardHthIncMel extends SupportCard{
 		//Set integer choice to be next inputed integer
 		int choice = input.nextInt();
 		//Set the health of chosen creature to equal itself + 300
-		player.getFrontline()[choice].setHealth(player.getFrontline()[choice].getHealth() + strength);	
+		player.getFrontline()[choice].setHealth(player.getFrontline()[choice].getHealth() + strength);
+		return true;
 	}
 
 	//Getter and Setter
