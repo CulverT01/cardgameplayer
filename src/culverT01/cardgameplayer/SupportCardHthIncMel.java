@@ -14,9 +14,9 @@ public class SupportCardHthIncMel extends SupportCard{
 
 	//Behaviour
 	@Override
-	public boolean effect(Player player, KeyFunction keyFunction) {
+	public boolean effect(Player player) {
 		//Call keyFunction's displayFrontline method, passing player and 'Melee Creature' as arguments
-		keyFunction.displayFrontline(player, "Melee Creature");
+		KeyFunction.displayFrontline(player, "Melee Creature");
 		//Create new Scanner object to take input
 		Scanner input = new Scanner(System.in);
 		//Ask User to input the number of the position of the card they want to apply this cards effect to

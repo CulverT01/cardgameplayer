@@ -12,7 +12,7 @@ public class SupportCardDefInc extends SupportCard {
 
 	//Behaviour
 	@Override
-	public boolean effect(Player player, KeyFunction keyFunction) {
+	public boolean effect(Player player) {
 		//Increase the player's defence points by the value stored in the strength attribute
 		player.setDefencePoints(player.getDefencePoints() + strength);
 		//Return the value true

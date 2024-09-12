@@ -13,7 +13,6 @@ class SupportCardRecMeTest {
 	CreatureCard creature1;
 	ArrayList<Card> wasteland;
 	ArrayList<Card> deck;
-	KeyFunction keyFunction;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -24,13 +23,12 @@ class SupportCardRecMeTest {
 		deck = new ArrayList<Card>();
 		wasteland.add(creature1);
 		player1 = new Player("PlayerName", 4000, wasteland, null, deck);
-		keyFunction = new KeyFunction();
 	}
 
 	@Test
 	void test_that_creature1_is_added_to_the_bottom_of_player1s_deck() {
 		//Act
-		boolean testEffect = support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1);
 		//Assert
 		assertEquals(true, testEffect);
 	}
@@ -40,7 +38,7 @@ class SupportCardRecMeTest {
 		//Arrange
 		wasteland.remove(0);
 		//Act
-		boolean testEffect = support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1);
 		//Assert
 		assertEquals(false, testEffect);
 	}

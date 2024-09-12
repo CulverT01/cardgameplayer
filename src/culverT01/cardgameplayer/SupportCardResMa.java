@@ -12,11 +12,11 @@ public class SupportCardResMa extends SupportCard {
 
 	//Behaviour
 	@Override
-	public boolean effect(Player player, KeyFunction keyFunction) {
-		//Call keyFunction's displayWasteland method, passing player and 'Magic Creature' as arguments
-		keyFunction.displayWasteland(player, "Magic Creature");
+	public boolean effect(Player player) {
+		//Call the KeyFunction class's displayWasteland method, passing player and 'Magic Creature' as arguments
+		KeyFunction.displayWasteland(player, "Magic Creature");
 		//Set boolean successfulTarget to the returned value of keyFunction.checkWasteland
-		boolean successfulTarget = keyFunction.checkWasteland(player, "Magic Creature");
+		boolean successfulTarget = KeyFunction.checkWasteland(player, "Magic Creature");
 		//If successfulTarget equals to true, then:
 		if (successfulTarget == true) {
 			//Create new Scanner object to take input

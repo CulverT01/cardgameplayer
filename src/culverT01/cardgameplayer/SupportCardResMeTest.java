@@ -13,8 +13,6 @@ class SupportCardResMeTest {
 	CreatureCard creature1;
 	CreatureCard creature2;
 	ArrayList<Card> wasteland;
-	KeyFunction keyFunction;
-
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -26,15 +24,13 @@ class SupportCardResMeTest {
 		wasteland.add(creature2);
 		player1 = new Player("PlayerName", 4000, wasteland, null, null);
 		CreatureCard [] frontline = {creature1, null, null, null};
-		player1.setFrontline(frontline);
-		keyFunction = new KeyFunction();
-		
+		player1.setFrontline(frontline);		
 	}
 
 	@Test
 	void test_effect_method_plays_melee_creature_from_wasteland_to_frontline() {
 		//Act
-		boolean testEffect = support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1);
 		//Assert
 		assertEquals(true, testEffect);
 	}
@@ -44,7 +40,7 @@ class SupportCardResMeTest {
 		//Arrange
 		wasteland.remove(0);
 		//Act
-		boolean testEffect = support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1);
 		//Assert
 		assertEquals(false, testEffect);
 	}
@@ -55,7 +51,7 @@ class SupportCardResMeTest {
 		CreatureCard [] frontline1 = {creature1, creature1, creature1, creature1};
 		player1.setFrontline(frontline1);
 		//Act
-		boolean testEffect = support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1);
 		//Assert
 		assertEquals(false, testEffect);
 	}

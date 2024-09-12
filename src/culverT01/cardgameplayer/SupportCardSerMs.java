@@ -11,11 +11,11 @@ public class SupportCardSerMs extends SupportCard {
 
 	//Behaviour
 	@Override
-	public boolean effect(Player player, KeyFunction keyFunction) {
-		//Call keyFunction's displayDeck method, passing player and 'Magic Creature' as arguments
-		keyFunction.displayDeck(player, "Magic Support");
+	public boolean effect(Player player) {
+		//Call the KeyFunction class's displayDeck method, passing player and 'Magic Creature' as arguments
+		KeyFunction.displayDeck(player, "Magic Support");
 		//Set boolean successfulTarget to the returned value of keyFunction's checkDeck method, passing player and 'Magic Support' as arguments
-		boolean successfulTarget = keyFunction.checkDeck(player, "Magic Support");
+		boolean successfulTarget = KeyFunction.checkDeck(player, "Magic Support");
 		//If successfulTarget equals to true, then:
 		if (successfulTarget == true) {
 			//Create new Scanner object to take input
@@ -29,7 +29,7 @@ public class SupportCardSerMs extends SupportCard {
 			//Remove selected item from the deck array list
 			player.getDeck().remove(choice);
 			//Call keyFunction's ShuffleDeck method, passing player as an argument to shuffle the deck
-			keyFunction.shuffleDeck(player);
+			KeyFunction.shuffleDeck(player);
 			return true;
 		}
 		//Else, then:

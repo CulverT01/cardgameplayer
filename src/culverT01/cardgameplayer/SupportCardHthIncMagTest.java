@@ -10,7 +10,6 @@ class SupportCardHthIncMagTest {
 	Player player1;
 	CreatureCard creature1;
 	CreatureCard [] frontline;
-	KeyFunction keyFunction;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -20,13 +19,12 @@ class SupportCardHthIncMagTest {
 		player1 = new Player("PlayerName", 4000, null, null, null);
 		CreatureCard[] frontline = { creature1, null, null, null };
 		player1.setFrontline(frontline);
-		keyFunction = new KeyFunction();
 	}
 
 	@Test
 	void test_creature1s_health_increases_from_800_to_1100() {
 		//Act
-		boolean testEffect = support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1);
 		//Assert
 		assertEquals(true, testEffect);
 	}

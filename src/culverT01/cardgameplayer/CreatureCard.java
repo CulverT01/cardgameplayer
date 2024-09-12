@@ -30,7 +30,9 @@ public class CreatureCard extends Card{
 				//Else, then:
 				else {
 					//Output the name, health, attack and position in the array of the Creature stored there.
-					System.out.print(opponent.getFrontline()[i].getName() +"\n"+ opponent.getFrontline()[i].getHealth() +"\n"+ opponent.getFrontline()[i].getAttack() +"\n position: "+ i);
+					System.out.print(opponent.getFrontline()[i].getName() + "\n"
+							+ opponent.getFrontline()[i].getHealth()
+							+ "\n" + opponent.getFrontline()[i].getAttack() + "\n position: " + i);
 					System.out.print("|\n|\n|\n|\t");
 				}	
 			}
@@ -57,6 +59,11 @@ public class CreatureCard extends Card{
 					else {
 						//Set the selected creature's health to equal result
 						opponent.getFrontline()[choice].setHealth(result);
+						//Output the name, health, attack and position in the array of the Creature stored there.
+						System.out.print(opponent.getFrontline()[choice].getName() + "\n"
+								+ opponent.getFrontline()[choice].getHealth() + "\n"
+								+ opponent.getFrontline()[choice].getAttack() + "\n position: " + choice);
+						System.out.print("|\n|\n|\n|\t");
 					}
 					//input.close();
 			}

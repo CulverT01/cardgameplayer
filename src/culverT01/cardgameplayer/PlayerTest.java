@@ -18,7 +18,6 @@ class PlayerTest {
 	CreatureCard creature4;
 	SupportCardAtkIncMel support1;
 	SupportCardAtkIncMag support2;
-	KeyFunction keyFunction;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -42,9 +41,7 @@ class PlayerTest {
 		
 		player1 = new Player("PlayerName", 4000, wasteland, hand, deck);
 		CreatureCard [] frontline = {null, null, null, null};
-		player1.setFrontline(frontline);
-		
-		keyFunction = new KeyFunction();	
+		player1.setFrontline(frontline);	
 	}
 
 	@Test
@@ -69,7 +66,7 @@ class PlayerTest {
 	@Test
 	void test_that_player_can_play_creature_cards_from_hand() {
 		//Act
-		player1.playCardFromHand(player1, keyFunction);
+		player1.playCardFromHand(player1);
 		//Assert
 		assertEquals(3, player1.getHand().size());
 	}
@@ -80,7 +77,7 @@ class PlayerTest {
 		CreatureCard [] frontline1 = {creature1, creature2, creature3, creature4};
 		player1.setFrontline(frontline1);
 		//Act
-		player1.playCardFromHand(player1, keyFunction);
+		player1.playCardFromHand(player1);
 		//Assert
 		assertEquals(4, player1.getHand().size());
 	}
@@ -92,7 +89,7 @@ class PlayerTest {
 		frontline2[0] = creature1;
 		player1.setFrontline(frontline2);
 		//Act
-		player1.playCardFromHand(player1, keyFunction);
+		player1.playCardFromHand(player1);
 		//Assert
 		assertEquals(1, player1.getWasteland().size());
 	}
@@ -104,7 +101,7 @@ class PlayerTest {
 		frontline3[0] = creature2;
 		player1.setFrontline(frontline3);
 		//Act
-		player1.playCardFromHand(player1, keyFunction);
+		player1.playCardFromHand(player1);
 		//Assert
 		assertEquals(1, player1.getWasteland().size());
 	}
@@ -116,7 +113,7 @@ class PlayerTest {
 		frontline4[0] = creature2;
 		player1.setFrontline(frontline4);
 		//Act
-		player1.playCardFromHand(player1, keyFunction);
+		player1.playCardFromHand(player1);
 		//Assert
 		assertEquals(4, player1.getHand().size());
 	}
@@ -128,7 +125,7 @@ class PlayerTest {
 		frontline5[0] = creature1;
 		player1.setFrontline(frontline5);
 		//Act
-		player1.playCardFromHand(player1, keyFunction);
+		player1.playCardFromHand(player1);
 		//Assert
 		assertEquals(4, player1.getHand().size());
 	}

@@ -13,7 +13,6 @@ class SupportCardSerIsTest {
 	Player player1;
 	ArrayList<Card> hand;
 	ArrayList<Card> deck;
-	KeyFunction keyFunction;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -24,13 +23,12 @@ class SupportCardSerIsTest {
 		support2 = new SupportCardSerMe("Conscription", "Item Support", "Legend", "Search 1 Melee Creature from your Deck and add it to your Hand");		
 		deck.add(support2);
 		player1 = new Player("PlayerName", 4000, null, hand, deck);
-		keyFunction = new KeyFunction();
 	}
 
 	@Test
 	void test_effect_method_adds_item_support_card_to_hand_from_deck() {
 		//Act
-		boolean testEffect = support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1);
 		//Assert
 		assertEquals(true, testEffect);
 	}
@@ -40,7 +38,7 @@ class SupportCardSerIsTest {
 		//Arrange
 		deck.remove(0);
 		//Act
-		boolean testEffect = support1.effect(player1, keyFunction);
+		boolean testEffect = support1.effect(player1);
 		//Assert
 		assertEquals(false, testEffect);
 	}

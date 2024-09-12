@@ -37,28 +37,12 @@ public class Player {
 			//Remove the card object at position 0 of deck
 			deck.remove(0);
 		}
-		//Loop for integer i is less than the size of the hand array, increasing i by 1 each loop
-		for (int i = 0; i < hand.size(); i++) {
-			//If the card type at position i of hand is 'Melee Creature' or 'Magic Creature', then: 
-			if(hand.get(i).getCardType() == "Melee Creature" || hand.get(i).getCardType() == "Magic Creature") {
-				//Output the name, skill, health, attack and position in hand array of the card
-				System.out.print(hand.get(i).getName() + "\n" + hand.get(i).getCardType() + "\n"
-						+ ((CreatureCard) hand.get(i)).getHealth() + "\n" + ((CreatureCard) hand.get(i)).getAttack()
-						+ "\n" + hand.get(i).getSkill() + "\n position: " + i);
-				System.out.print("|\n|\n|\n|\n|\n|\t");
-			}
-			else {
-				//Output the name, skill, description of effect and position in hand array of the card
-				System.out.print(hand.get(i).getName() + "\n" + hand.get(i).getCardType() 
-						+ "\n" + hand.get(i).getSkill()
-						+ "\n" + ((SupportCard) hand.get(i)).getEffectDesc() + "\n position: " + i);
-				System.out.print("|\n|\n|\t");
-			}	
-		}
+		//Call the KeyFunction class's displayHand method, passing player as an argument
+		//KeyFunction.displayHand(player);
 	}
 	//Playing a card from hand method
-	public void playCardFromHand(Player player, KeyFunction keyFunction) {
-		//Try to: create new Scanner object to take input
+	public void playCardFromHand(Player player) {
+		//Create new Scanner object to take input
 		Scanner input = new Scanner(System.in);
 			//Ask User to input the number of the position of the card they want to play
 			System.out.println("Enter the position of the card in your hand you would like to play");
@@ -111,7 +95,7 @@ public class Player {
 					//If the card type of ma is equal to 'Magic Creature', then:
 					else if( ma.getCardType() == "Magic Creature") {
 						//Set successMagicSupport to equal the returned value of the selected card's effect method
-						successMagicSupport = ((SupportCard) hand.get(choice)).effect(player, keyFunction);
+						successMagicSupport = (boolean) ((SupportCard) hand.get(choice)).effect(player);
 						//If successMagicSupport is equal to true, then:
 						if(successMagicSupport == true) {
 							//Add selected card to the wasteland array
@@ -158,12 +142,14 @@ public class Player {
 					//Else if the card type of me is equal to 'Melee Creature', then
 					else if( me.getCardType() == "Melee Creature") {
 						//Set successItemSupport to equal the returned value of the selected card's effect method
-						successItemSupport = ((SupportCard) hand.get(choice)).effect(player,  keyFunction);
+						successItemSupport =  (boolean) ((SupportCard) hand.get(choice)).effect(player);
 						if (successItemSupport == true) {
 							//Add selected card to the wasteland array
 							wasteland.add(hand.get(choice));
 							//Remove the selected card from the hand
 							hand.remove(choice);
+							//Set playedMagicSupport to true
+							playedItemSupport = true;
 						}
 						//Break loop
 						break;
@@ -176,12 +162,12 @@ public class Player {
 				}
 				//If playedItemSupport is equal to false, then:
 				if(playedItemSupport == false) {
-					//Output that their frontline doesn't have magic creatures and thus magic support cards can't be played
+					//Output that their frontline doesn't have magic creatures and thus melee support cards can't be played
 					System.out.println("Front Line does not have a Melee Creature card. You cannot play any Item Support cards");
 				}
 				//If successItemSupport is equal to false, then:
 				if(successItemSupport == false) {
-					//Output that their frontline doesn't have magic creatures and thus magic support cards can't be played
+					//Output that their frontline doesn't have magic creatures and thus melee support cards can't be played
 					System.out.println("Support Card's effect cannot resolve successfully. Check Support Card's effect before running again.");
 				}
 				//Prevent other cases running
