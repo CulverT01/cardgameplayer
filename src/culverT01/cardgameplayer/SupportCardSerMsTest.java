@@ -20,7 +20,7 @@ class SupportCardSerMsTest {
 		hand = new ArrayList<Card>();
 		deck = new ArrayList<Card>();
 		support1 = new SupportCardSerMs("Memory Spell Lv 1", "Magic Support", "Ace", "Search 1 Magic Support Card from your Deck and add it to your Hand");
-		support2 = new SupportCardSerMa("Graduation", "Magic Support", null, "Search 1 Magic Creature from your Deck and add it to your Hand");
+		support2 = new SupportCardSerMa("Graduation", "Magic Support", "Legend", "Search 1 Magic Creature from your Deck and add it to your Hand");
 		deck.add(support2);
 		player1 = new Player("PlayerName", 4000, null, hand, deck);
 	}

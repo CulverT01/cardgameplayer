@@ -67,7 +67,7 @@ class AppTest {
 		CreatureCard [] frontline = {null, null, null, null};
 		CreatureCard [] front2line = {null, null, null, null};
 		player1.setFrontline(frontline);
-		player1.setFrontline(front2line);
+		player2.setFrontline(front2line);
 		
 		playerList = new ArrayList<Player>();
 		playerList.add(player1);

@@ -30,10 +30,10 @@ public class CreatureCard extends Card{
 				//Else, then:
 				else {
 					//Output the name, health, attack and position in the array of the Creature stored there.
-					System.out.print(opponent.getFrontline()[i].getName() + "\n"
+					System.out.println(opponent.getFrontline()[i].getName() + "|\n"
 							+ opponent.getFrontline()[i].getHealth()
-							+ "\n" + opponent.getFrontline()[i].getAttack() + "\n position: " + i);
-					System.out.print("|\n|\n|\n|\t");
+							+ "|\n" + opponent.getFrontline()[i].getAttack() + "|\n position: " + i + "|");
+					System.out.println("-------------------");
 				}	
 			}
 			//If nullCounter is less than 4, then:
@@ -60,10 +60,10 @@ public class CreatureCard extends Card{
 						//Set the selected creature's health to equal result
 						opponent.getFrontline()[choice].setHealth(result);
 						//Output the name, health, attack and position in the array of the Creature stored there.
-						System.out.print(opponent.getFrontline()[choice].getName() + "\n"
-								+ opponent.getFrontline()[choice].getHealth() + "\n"
-								+ opponent.getFrontline()[choice].getAttack() + "\n position: " + choice);
-						System.out.print("|\n|\n|\n|\t");
+						System.out.println(opponent.getFrontline()[choice].getName() + "|\n"
+								+ opponent.getFrontline()[choice].getHealth() + "|\n"
+								+ opponent.getFrontline()[choice].getAttack() + "|\n position: " + choice + "|");
+						System.out.println("-------------------");
 					}
 					//input.close();
 			}
@@ -80,6 +80,7 @@ public class CreatureCard extends Card{
 				else {
 					//Set opponent's defence points to equal directResult
 					opponent.setDefencePoints(directResult);
+					System.out.println("Player " + opponent.getPlayerName() + "'s Defence Points: " + opponent.getDefencePoints());
 				}
 			}
 		}

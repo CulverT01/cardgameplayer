@@ -24,11 +24,11 @@ public class KeyFunction {
 			else if (player.getFrontline()[i].getCardType() == cardType) {
 				// Output the name, health, attack, skill and position in the array of the Creature
 				// stored there.
-				System.out.print(player.getFrontline()[i].getName() + "\n" 
-						+ player.getFrontline()[i].getHealth() + "\n"
-						+ player.getFrontline()[i].getAttack() + "\n" 
-						+ player.getFrontline()[i].getSkill() + "\n position: " + i);
-				System.out.print("|\n|\n|\n|\t");
+				System.out.println(player.getFrontline()[i].getName() + "|\n" 
+						+ player.getFrontline()[i].getHealth() + "|\n"
+						+ player.getFrontline()[i].getAttack() + "|\n" 
+						+ player.getFrontline()[i].getSkill() + "|\n position: " + i + "|");
+				System.out.println("-------------------");
 			}
 			// Else, then:
 			else {
@@ -53,11 +53,11 @@ public class KeyFunction {
 				if (player.getWasteland().get(i).getCardType() == cardType) {
 					// Output the name, health, attack, skill and position in the array of the Creature
 					// stored there.
-					System.out.print(player.getWasteland().get(i).getName() + "\n"
-							+ ((CreatureCard) player.getWasteland().get(i)).getHealth() + "\n"
-							+ ((CreatureCard) player.getWasteland().get(i)).getAttack()
-							+ player.getWasteland().get(i).getSkill() + "\n" + "\n position: " + i);
-					System.out.println("|\n|\n|\n|\t");
+					System.out.println(player.getWasteland().get(i).getName() + "|\n"
+							+ ((CreatureCard) player.getWasteland().get(i)).getHealth() + "|\n"
+							+ ((CreatureCard) player.getWasteland().get(i)).getAttack() + "|\n"
+							+ player.getWasteland().get(i).getSkill()  + "|\n position: " + i  + "|");
+					System.out.println("-------------------");
 				}
 				// Else, then:
 				else {
@@ -79,10 +79,10 @@ public class KeyFunction {
 				if (player.getWasteland().get(i).getCardType() == cardType) {
 					// Output the name, skill, effect description and position in the array of the
 					// Support Card stored there.
-					System.out.print(player.getWasteland().get(i).getName() + "\n"
-							+ player.getWasteland().get(i).getSkill() + "\n"
-							+ ((SupportCard) player.getWasteland().get(i)).getEffectDesc() + "\n position: " + i);
-					System.out.println("|\n|\n|\n|\t");
+					System.out.println(player.getWasteland().get(i).getName() + "|\n"
+							+ player.getWasteland().get(i).getSkill() + "|\n"
+							+ ((SupportCard) player.getWasteland().get(i)).getEffectDesc() + "|\n position: " + i + "|");
+					System.out.println("---------------------------------------------");
 				}
 				// Else, then:
 				else {
@@ -115,11 +115,11 @@ public class KeyFunction {
 				if (player.getDeck().get(i).getCardType() == cardType) {
 					// Output the name, health, attack, skill and position in the array of the Creature
 					// stored there.
-					System.out.print(player.getDeck().get(i).getName() + "\n"
-							+ ((CreatureCard) player.getDeck().get(i)).getHealth() + "\n"
-							+ ((CreatureCard) player.getDeck().get(i)).getAttack() + "\n"
-							+ player.getDeck().get(i).getSkill() + "\n position: " + i);
-					System.out.println("|\n|\n|\n|\n|\t");
+					System.out.println(player.getDeck().get(i).getName() + "|\n"
+							+ ((CreatureCard) player.getDeck().get(i)).getHealth() + "|\n"
+							+ ((CreatureCard) player.getDeck().get(i)).getAttack() + "|\n"
+							+ player.getDeck().get(i).getSkill() + "|\n position: " + i + "|");
+					System.out.println("-------------------");
 				}
 				// Else, then:
 				else {
@@ -141,9 +141,9 @@ public class KeyFunction {
 				if (player.getDeck().get(i).getCardType() == cardType) {
 					// Output the name, skill, effect description and position in the array of the
 					// Support Card stored there.
-					System.out.print(player.getDeck().get(i).getName() + "\n" + player.getDeck().get(i).getSkill()
-							+ "\n" + ((SupportCard) player.getDeck().get(i)).getEffectDesc() + "\n position: " + i);
-					System.out.println("|\n|\n|\t");
+					System.out.println(player.getDeck().get(i).getName() + "|\n" + player.getDeck().get(i).getSkill()
+							+ "|\n" + ((SupportCard) player.getDeck().get(i)).getEffectDesc() + "|\n position: " + i + "|");
+					System.out.println("---------------------------------------------");				
 				}
 				// Else, then:
 				else {
@@ -162,6 +162,7 @@ public class KeyFunction {
 	
 	//Display a player's hand
 	public static void displayHand(Player player) {
+		System.out.println(player.getPlayerName() + "'s Hand:");
 		// Loop for integer i is less than the size of the hand array, increasing i by 1
 		// each loop
 		for (int i = 0; i < player.getHand().size(); i++) {
@@ -170,18 +171,18 @@ public class KeyFunction {
 			if (player.getHand().get(i).getCardType() == "Melee Creature"
 					|| player.getHand().get(i).getCardType() == "Magic Creature") {
 				// Output the name, skill, health, attack and position in hand array of the card
-				System.out.print(player.getHand().get(i).getName() + "\n" + player.getHand().get(i).getCardType() + "\n"
-						+ ((CreatureCard) player.getHand().get(i)).getHealth() + "\n"
-						+ ((CreatureCard) player.getHand().get(i)).getAttack() + "\n"
-						+ player.getHand().get(i).getSkill() + "\n position: " + i);
-				System.out.print("|\n|\n|\n|\n|\n|\t");
+				System.out.println(player.getHand().get(i).getName() + "|\n" + player.getHand().get(i).getCardType() + "|\n"
+						+ ((CreatureCard) player.getHand().get(i)).getHealth() + "|\n"
+						+ ((CreatureCard) player.getHand().get(i)).getAttack() + "|\n"
+						+ player.getHand().get(i).getSkill() + "|\n position: " + i + "|");
+				System.out.println("-------------------");
 			} else {
 				// Output the name, skill, description of effect and position in hand array of
 				// the card
-				System.out.print(player.getHand().get(i).getName() + "\n" + player.getHand().get(i).getCardType() + "\n"
-						+ player.getHand().get(i).getSkill() + "\n"
-						+ ((SupportCard) player.getHand().get(i)).getEffectDesc() + "\n position: " + i);
-				System.out.print("|\n|\n|\t");
+				System.out.println(player.getHand().get(i).getName() + "|\n" + player.getHand().get(i).getCardType() + "|\n"
+						+ player.getHand().get(i).getSkill() + "|\n"
+						+ ((SupportCard) player.getHand().get(i)).getEffectDesc() + "|\n position: " + i + "|");
+				System.out.println("---------------------------------------------");
 			}
 		}
 	}
@@ -194,20 +195,23 @@ public class KeyFunction {
 				// Output whitespace so NullPointerExeceptions don't occur
 				System.out.print("");
 			}
-			// Output the name, health, attack, skill and position in the array of the Creature
-			// stored there.
-			System.out.print(player.getFrontline()[i].getName() + "\n" 
-					+ player.getFrontline()[i].getHealth() + "\n"
-					+ player.getFrontline()[i].getAttack() + "\n" 
-					+ player.getFrontline()[i].getSkill() + "\n position: " + i);
-			System.out.print("|\n|\n|\n|\t");
+			//Else, then:
+			else {
+				// Output the name, health, attack, skill and position in the array of the Creature
+				// stored there.
+				System.out.println(player.getFrontline()[i].getName() + "|\n" 
+						+ player.getFrontline()[i].getHealth() + "|\n"
+						+ player.getFrontline()[i].getAttack() + "|\n" 
+						+ player.getFrontline()[i].getSkill() + "|\n position: " + i + "|");
+				System.out.println("-------------------");
+			}
 		}
 		System.out.println(player.getPlayerName() + "'s Wasteland:");
 		if( player.getWasteland().size() > 0) {
 			for(Card ca : player.getWasteland()) {
-				System.out.print(ca.getName() + "\n" + ca.getCardType() + "\n" + ca.getSkill() + "\n position: "
-						+ player.getWasteland().indexOf(ca));
-				System.out.print("|\n|\n|\n|\t");
+				System.out.println(ca.getName() + "|\n" + ca.getCardType() + "|\n" + ca.getSkill() + "|\n position: "
+						+ player.getWasteland().indexOf(ca) + "|");
+				System.out.println("-------------------");
 			}
 		}
 		

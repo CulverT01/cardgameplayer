@@ -6,8 +6,59 @@ import java.util.Scanner;
 public class App {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		//Set wasteland1 to be new ArrayList that stores the Card object
+		ArrayList<Card> wasteland1 = new ArrayList<Card>();
+		//Set wasteland2 to be new ArrayList that stores the Card object
+		ArrayList<Card> wasteland2 = new ArrayList<Card>();
+		
+		//Set hand1 to be new ArrayList that stores the Card object
+		ArrayList<Card> hand1 = new ArrayList<Card>();
+		//Set hand2 to be new ArrayList that stores the Card object
+		ArrayList<Card> hand2 = new ArrayList<Card>();
+		
+		//Construct new Player object player1 using values: "", 4000, wasteland1,
+		//hand1, returned value from DeckLoad's loadDeck1 method
+		Player player1 = new Player("", 4000, wasteland1, hand1, DeckLoad.loadDeck1());
+		//Construct new Player object player1 using values: "", 4000, wasteland2,
+		//hand2, returned value from DeckLoad's loadDeck2 method
+		Player player2 = new Player("", 4000, wasteland2, hand2, DeckLoad.loadDeck2());
 
+		//Set frontline as an array that stores 4 CreatureCard objects
+		CreatureCard [] frontline1 = {null, null, null, null};
+		//Set frontline2 as an array that stores 4 CreatureCard objects
+		CreatureCard [] frontline2 = {null, null, null, null};
+		//Set player1's frontline attribute to equal frontline1
+		player1.setFrontline(frontline1);
+		//Set player2's frontline attribute to equal frontline2
+		player2.setFrontline(frontline2);
+		
+		//Create new Scanner object to take input
+		Scanner input = new Scanner(System.in);
+		//Ask User to input name of Player 1
+		System.out.println("What is Player 1's name?");
+		//Set String name1 to be next inputed string
+		String name1 = input.nextLine();
+		//Set player1's playerName attribute to equal name1
+		player1.setPlayerName(name1);
+		
+		//Create new Scanner object to take input
+		Scanner input2 = new Scanner(System.in);
+		//Ask User to input name of Player 2
+		System.out.println("What is Player 2's name?");
+		//Set String name2 to be next inputed string
+		String name2 = input2.nextLine();
+		//Set player2's playerName attribute to equal name2
+		player2.setPlayerName(name2);
+		
+		//Set playerList to be new ArrayList that stores the Player object
+		ArrayList<Player> playerList = new ArrayList<Player>();
+		//Add player1 to playerList
+		playerList.add(player1);
+		//Add player2 to playerList
+		playerList.add(player2);
+		
+		//Call App class's playGame method, passing playerList as an argument
+		App.playGame(playerList);
 	}
 	//plan Stage method
 	public static void planStage(Player player) {
@@ -43,39 +94,68 @@ public class App {
 	}
 	//battle Stage method
 	public static void battleStage(Player player1, Player player2) {
-		// Loop for integer i, which equal to 0, is less than the length of player1's
+		//Set temp to be new ArrayList that stores the CreatureCard object
+		ArrayList<CreatureCard> temp = new ArrayList<CreatureCard>();
+		//Set boolean finishedAttack to equal false
+		boolean finishedAttack = false;
+		//Loop for integer i, which equal to 0, is less than the length of player1's
 		//frontline; increasing i by 1 for each successful loop
 		for(int i = 0; i < player1.getFrontline().length; i++) {
+			// If item at position i in player's frontline array is equal to null, then:
 			if(player1.getFrontline()[i] == null) {
+				// Output whitespace so NullPointerExeceptions don't occur
 				System.out.print("");
 			}
+			//Else, then:
 			else {
+				//Add item at position i in player's frontline array to temp
+				temp.add(player1.getFrontline()[i]);
+				// Output the name, health, attack, skill and position in player1's frontline array of the Creature
+				// stored at position i.
+				System.out.println(player1.getFrontline()[i].getName() + "|\n" + player1.getFrontline()[i].getHealth()
+						+ "|\n" + player1.getFrontline()[i].getAttack() + "|\n" + player1.getFrontline()[i].getSkill()
+						+ "|\n position: " + i + "|");
+				System.out.println("-------------------");
+			}
+		}
+		//Loop while finishedAttack is equal to false
+		while(finishedAttack == false) {
+			//Create new Scanner object to take input
+			Scanner input = new Scanner(System.in);
+			//Ask user which Creature that wish to attack with
+			System.out.println("Enter the position of the creature you wish to attack with");
+			//Set integer choice to equal the user's input on the next line
+			int choice = input.nextInt();
+			//If temp contains the creature stored at position choice of player1's frontline, then:
+			if (temp.contains(player1.getFrontline()[choice])) {
+				//Call said creature's creatureAttack method, passing player2 as an argument
+				player1.getFrontline()[choice].creatureAttack(player2);
+				//Remove said creature from temp
+				temp.remove(temp.indexOf(player1.getFrontline()[choice]));
 				//Create new Scanner object to take input
-				Scanner input = new Scanner(System.in);
-				//Ask user if they wish to attack with this Creature
-				System.out.println("Do you wish to attack with this Creature?");
-				//Set String choice to equal the user's input on the next line
-				String choice = input.nextLine();
-				//Change choice to lower case
-				choice.toLowerCase();
-				//If choice is equal to 'yes', then:
-				if (choice.equals("yes")) {
-					player1.getFrontline()[i].creatureAttack(player2);
-					//Create new Scanner object to take input
-					Scanner input2 = new Scanner(System.in);
-					//Ask user if they are finished attacking with their Creatures
-					System.out.println("Are you finished attacking with your Creatures? yes or no?");
-					//Set String choice2 to equal the user's input on the next line
-					String choice2 = input2.nextLine();
-					//Change choice2 to lower case
-					choice2.toLowerCase();
-					//If choice2 is equal to 'yes', then:
-					if (choice2.equals("yes")) {
-						//break loop
-						break;
-					}
+				Scanner input2 = new Scanner(System.in);
+				//Ask user if they are finished attacking with their Creatures
+				System.out.println("Are you finished attacking with your Creatures? yes or no?");
+				//Set String choice2 to equal the user's input on the next line
+				String choice2 = input2.nextLine();
+				//Change choice2 to lower case
+				choice2.toLowerCase();
+				//If choice2 is equal to 'yes', then:
+				if (choice2.equals("yes")) {
+					//Set finishedAttack to equal true
+					finishedAttack = true;
+				}
+				//Else if temp is empty, then:
+				else if (temp.isEmpty()) {
+					//Set finishedAttack to equal true
+					finishedAttack = true;
 				}
 			}
+			//Else, then:
+			else {
+				//Output Creature has already attacked
+				System.out.println("Creature has already attacked");
+			}		
 		}
 	}
 	//opening Hand Draw method
@@ -217,8 +297,6 @@ public class App {
 				//Set gameOver to equal true
 				gameOver = true;
 			}
-			//Output the player object in position opponent in playerList array's name  + "'s Hand"
-			System.out.println(playerList.get(turnPlayer).getPlayerName() + "'s Hand:");
 			//Call the class KeyFunction's displayHand method, passing the player object in position turnPlayer in playerList array as an argument
 			KeyFunction.displayHand(playerList.get(turnPlayer));
 			//Output 'Plan Stage'
