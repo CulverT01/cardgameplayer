@@ -151,6 +151,11 @@ public class App {
 					finishedAttack = true;
 				}
 			}
+			//Else if temp is empty, then:
+			else if (temp.isEmpty()) {
+				//Set finishedAttack to equal true
+				finishedAttack = true;
+			}
 			//Else, then:
 			else {
 				//Output Creature has already attacked
